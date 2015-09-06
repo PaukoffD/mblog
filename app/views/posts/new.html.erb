@@ -1,2 +1,13 @@
 <h1>New Post</h1>
-<%= render 'form', post: @post %>
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body, class: 'form-control', rows: 6,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
+  <%= f.button :submit %>
+<% end %>
+
+
+
+
+
+<!--<%= render 'form', post: @post %>-->
