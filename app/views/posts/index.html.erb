@@ -1,7 +1,15 @@
-<h1>This will be a list of posts</h1>
+
  <%= link_to 'New Post', new_post_path %>
+ 
+ 
+ 
+ 
  <div>
-    <%= paginate(@posts) %>
+ <%= will_paginate @posts, :page_links => false %>
+ 
+ 
+ 
+ 
  <ul>
         <% @posts.each do |p| %>
             <li>
@@ -11,5 +19,8 @@
             </li>
         <% end %>
     </ul>
-	    <%= paginate(@posts) %>
+	     <%= will_paginate @posts, :page_links => false %>
+		 
+		 
+		
 </div>
