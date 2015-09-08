@@ -1,16 +1,12 @@
 
- <%= link_to 'New Post', new_post_path %>
- 
- 
- 
- 
- <div>
- <%= will_paginate @posts, :page_links => false %>
- 
- 
- 
- 
- <ul>
+
+
+
+<% if user_signed_in? %> 
+ <% if current_user.admin %>
+     <%= link_to 'New Post', new_post_path %>
+  <% end %> 
+  <ul>
         <% @posts.each do |p| %>
             <li>
                 <h3><%= link_to p.title, post_path(p.id) %></h3>
@@ -19,8 +15,23 @@
             </li>
         <% end %>
     </ul>
-	     <%= will_paginate @posts, :page_links => false %>
+<% else %>
+  <ul>
+        <% @posts.each do |p| %>
+            <li>
+                <h3><%= link_to p.title, post_path(p.id) %></h3>
+			
+                <p><%= markdown(p.body) %></p>
+            </li>
+        <% end %>
+    </ul>
+  <% end %> 
+ 
+ 
+ 
+ 
+ 
+	      <%= paginate(@posts) %>
 		 
-		 
+	 
 		
-</div>

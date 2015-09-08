@@ -1,11 +1,14 @@
 <h1>
-        <%= @post.title %>
-        <% if @post.user == current_user %>
-            <small><%= link_to 'edit', edit_post_path(@post) %></small>
-        <% end %>
+      <span class="label label-primary"><%= @post.title %></span>  
+        <% if user_signed_in? %> 
+          <% if current_user.admin %>
+             <small><%= link_to '    edit', edit_post_path(@post) %></small>
+          <% end %> 
+		<% end %> 	
+		
 </h1>
 
 
-<h1>This will be a individual post page</h1>
+
  
-<p><%= markdown(@post.body)%></p>
+<p><span class="label label-default"><%= markdown(@post.body)%></span></p>

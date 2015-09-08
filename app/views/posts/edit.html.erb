@@ -1,5 +1,9 @@
 <h1>Edit post</h1>
 <p><%= link_to 'back', post_path(@post) %></p>
-<%= render 'form', post: @post %>
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body, class: 'form-control', rows: 6,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
+  <%= f.button :submit %>
+<% end %>
 <br />
     <p><%= link_to 'delete post', @post, method: :delete, data: {confirm: "Are you sure you want to delete this permanently?"} %></p>

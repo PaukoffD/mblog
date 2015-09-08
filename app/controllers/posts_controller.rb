@@ -4,8 +4,8 @@ class PostsController < ApplicationController
  
  def index
  
- @posts = Post.all
- @posts = Post.paginate(:page => params[:page])
+ 
+ @posts = Post.order('created_at DESC').page(params[:page])
  end
  
  def show
@@ -18,7 +18,7 @@ end
 
 def edit
    @post = Post.find(params[:id])
-   redirect_to posts_path unless @post.user == current_user
+   
 end
 
 
@@ -38,18 +38,14 @@ end
 		
 def update
         @post = Post.find(params[:id])
-        if @post.user == current_user
+        
             if @post.update_attributes(allowed_params)
                 flash[:success] = "Updated post"
                 redirect_to @post
             else
                 render 'edit'
             end
-        else
-            redirect_to posts_path
-            flash[:notice] = "You can't to this"
-        end
-end
+end      
 
 def destroy
         @post = Post.find(params[:id])
