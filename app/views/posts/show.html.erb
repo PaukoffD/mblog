@@ -26,22 +26,27 @@
     <%= comment.body %>
   </p>
 <% end %>
+<br>
+<br>
 
-<h2>Add a comment:</h2>
+<h3><span class="label label-default">"Write comments you need login"</span></h3>
+<br>
+<br>
+<br>
+
+
+
+
 <% if user_signed_in? %> 
-  
+  <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
- <%= commenter= current_user.name %>
+ 
+  
+    
+  <!--<%= f.hidden_field :commenter, :value => current_user.name %> -->
   <p>
-  <div class="input-group input-group-lg">
-    <span class="input-group-addon" id="sizing-addon1">User</span>
-    <input type="text" class="form-control" placeholder=<%= current_user.name%> aria-describedby="sizing-addon1">
-  </div>
-  </p>
-  <%= commenter= current_user.name %>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+   
+    <%= f.input :body, class: 'form-control', rows: 6,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
   </p>
   <p>
     <%= f.submit %>

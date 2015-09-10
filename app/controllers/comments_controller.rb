@@ -1,10 +1,16 @@
 class CommentsController < ApplicationController
 before_filter :find_post, only: [:show, :edit, :update, :destroy]
+def new
+    @comment = comment.new
+end
+
+
 
  def create
     @post = Post.find(params[:post_id])
-	commenter= current_user.name 
-    @comment = @post.comments.create(comment_params)
+	@comment = Comment.new  comment_params
+	@comment.commenter= current_user.name 
+    @post.comments << @comment
 	
     redirect_to post_path(@post)
   end
