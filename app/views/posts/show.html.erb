@@ -43,10 +43,10 @@
  
   
     
-  <!--<%= f.hidden_field :commenter, :value => current_user.name %> -->
+ 
   <p>
    
-    <%= f.input :body, class: 'form-control', rows: 6,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
+    <%= f.text_area :body, class: 'form-control', :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
   </p>
   <p>
     <%= f.submit %>
