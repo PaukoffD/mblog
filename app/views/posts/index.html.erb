@@ -21,10 +21,10 @@
      <%= link_to 'New Post', new_post_path %>
   <% end %> 
   <ul>
-        <% @posts..each do |p| %>
+       <% @posts.includes(:user).each do |p| %>
             <li>
                 <h3><%= link_to p.title, post_path(p.id) %></h3>
-			    <h5>Posted: <%= p.user.name %> at <%= p.created_at %></h5>
+			    <p5><p class="bg-info">Posted: <%= p.user.name %> at <%= p.created_at %></p></p5>
                 <p><%= markdown(p.body) %></p>
             </li>
         <% end %>

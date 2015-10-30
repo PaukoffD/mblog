@@ -9,7 +9,7 @@ class PostsController < ApplicationController
  end
  
  def show
-  @post = Post.find(params[:id])
+  @post = Post.friendly.find(params[:id])
  end
 	
 def new
@@ -17,7 +17,7 @@ def new
 end
 
 def edit
-   @post = Post.find(params[:id])
+   @post = Post.friendly.find(params[:id])
    
 end
 
@@ -37,7 +37,7 @@ end
    
 		
 def update
-        @post = Post.find(params[:id])
+        @post = Post.friendly.find(params[:id])
         
             if @post.update_attributes(allowed_params)
                 flash[:success] = "Updated post"
@@ -48,7 +48,7 @@ def update
 end      
 
 def destroy
-        @post = Post.find(params[:id])
+        @post = Post.friendly.find(params[:id])
         if @post.user == current_user
             @post.destroy
             redirect_to posts_path
@@ -60,10 +60,10 @@ def destroy
 
  private
         def allowed_params
-            params.require(:post).permit(:title, :body, :user_id)
+            params.require(:post).permit(:title, :body, :user_id,:slug)
         end
 		
 		def find_post
-        @post = Post.find(params[:id])
+        @post = Post.friendly.find(params[:id])
         end
 end

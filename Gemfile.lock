@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (6.0.0)
       execjs
       json
+    babosa (1.0.2)
     bcrypt (3.1.10-x86-mingw32)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -79,6 +80,8 @@ GEM
     execjs (2.6.0)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -220,6 +223,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  babosa
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -227,6 +231,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.1.0)
   devise
+  friendly_id
   jbuilder (~> 2.0)
   jquery-rails
   kaminari-bootstrap
