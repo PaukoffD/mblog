@@ -7,7 +7,7 @@ end
 
 
  def create
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
 	@comment = Comment.new  comment_params
 	@comment.commenter= current_user.name 
     @post.comments << @comment

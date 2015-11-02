@@ -2,6 +2,11 @@ class PostsController < ApplicationController
  before_filter :authenticate_user!, except: [:show, :index]
  before_filter :find_post, only: [:show, :edit, :update, :destroy]
  
+ def normalize_friendly_id(string)
+    string.to_slug.normalize.to_s
+end
+ 
+ 
  def index
  
  
@@ -23,9 +28,11 @@ end
 
 
   def create
-       @user = current_user       
+         
 	   @post = Post.new(allowed_params)
-
+	   @post.slug= normalize_friendly_id(@post.title)
+	   puts @post.slug
+       @post.user_id=current_user.id 
         if @post.save
             flash[:success] = "Created new post"
             redirect_to @post
@@ -60,10 +67,13 @@ def destroy
 
  private
         def allowed_params
-            params.require(:post).permit(:title, :body, :user_id,:slug)
+            params.require(:post).permit(:title, :body, :user_id, :slug)
         end
 		
 		def find_post
         @post = Post.friendly.find(params[:id])
+		 #if request.path != post_path(@post)
+        #return redirect_to @post, :status => :moved_permanently
+        #end
         end
 end

@@ -18,12 +18,12 @@
 <td>
 <% if user_signed_in? %> 
  <% if current_user.admin %>
-     <%= link_to 'New Post', new_post_path %>
+     <%= link_to 'New Post', new_post_path, :class => "btn btn-info"%>
   <% end %> 
   <ul>
        <% @posts.includes(:user).each do |p| %>
             <li>
-                <h3><%= link_to p.title, post_path(p.id) %></h3>
+                <h3><%= link_to p.title, post_path(p.to_param) %></h3>
 			    <p5><p class="bg-info">Posted: <%= p.user.name %> at <%= p.created_at %></p></p5>
                 <p><%= markdown(p.body) %></p>
             </li>
@@ -51,6 +51,14 @@
 <td>
 <h4>Blog Categories</h4>
 <h4>Recent Blog Entries</h4>
+<ul>
+       <% @posts.includes(:user).each do |p| %>
+            <li>
+                <h5><%= link_to p.title, post_path(p.to_param) %></h5>
+			    <p5><p class="bg-info">Posted: <%= p.user.name %> at <%= p.created_at %></p></p5>
+           </li>
+        <% end %>
+    </ul>
 <h4>Blog Archive</h4>
 <h4>Blog Tag Cloud</h4>
 </td>	 
