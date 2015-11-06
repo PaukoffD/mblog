@@ -13,6 +13,10 @@ end
  @posts = Post.order('created_at DESC').page(params[:page])
  end
  
+ def archive
+    @posts = Post.visible.by_date(params)
+  end
+ 
  def show
   @post = Post.friendly.find(params[:id])
  end
