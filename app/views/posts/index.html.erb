@@ -55,7 +55,29 @@
 </br>
 <h4>Blog Categories</h4>
 
-<h4>Blog Archive</h4>
+<p4>Blog Archive</p4>
+<% @posts.organize_posts.to_a.reverse.each do |year, months_with_entries| %>
+      <% d = DateTime.parse("1/#{year}") %>
+
+      <li> <span></span>
+        <%= link_to(year, root_path) %>
+
+        <ul class="months">
+          <% months_with_entries.each do |month, entries| %>
+            <% d = DateTime.parse("#{year}, #{month}") %>
+
+            <li> <span></span>
+              <%= link_to I18n.l(d, :format => "%B"), root_path %>
+            </li>
+
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+
+
+
+
 <h4>Blog Tag Cloud</h4>
 </td>	 
 

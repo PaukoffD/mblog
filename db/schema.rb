@@ -41,11 +41,14 @@ ActiveRecord::Schema.define(version: 20151103122916) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.string   "slug"
     t.boolean  "hidden"
+    t.boolean  "visible",      default: false
+    t.datetime "published_at"
+    t.text     "summary"
   end
 
   create_table "users", force: :cascade do |t|
