@@ -3,6 +3,8 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :title %>
   <%= f.input :body, class: 'form-control', rows: 6,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}} %>
+  
+  <%= f.input :hidden,   as: :boolean %>
   <%= f.button :submit %>
 <% end %>
 <br />

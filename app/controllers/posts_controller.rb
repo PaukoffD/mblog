@@ -67,7 +67,7 @@ def destroy
 
  private
         def allowed_params
-            params.require(:post).permit(:title, :body, :user_id, :slug)
+            params.require(:post).permit(:title, :body, :user_id, :slug, :hidden)
         end
 		
 		def find_post
