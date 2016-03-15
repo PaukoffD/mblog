@@ -68,7 +68,7 @@
 
             <li> <span></span>
               <%= link_to I18n.l(d, :format => "%B"), root_path %>
-			  <span class="badge"><%= @posts.months_for(year).count %></span>
+			  <span class="badge"><%= @posts.years.count %></span>
             </li>
 
           <% end %>

@@ -30,6 +30,7 @@ extend FriendlyId
           date = DateTime.new(year, month)
           entries[year] ||= []
           entries[year] << [date.strftime("%B"), self.visible.by_date(date, :month)]
+		  puts entries[0]
         end
       end
     end
