@@ -7,6 +7,7 @@ gem 'rails', '4.2.4'
 #gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3', '1.3.10'
+  gem 'pg'
 end
 group :production do
  # gem 'sqlite3', '1.3.10'
