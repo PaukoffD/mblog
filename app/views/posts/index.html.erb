@@ -55,10 +55,8 @@
 </br>
 <h4>Blog Categories</h4>
 
-<p4>Blog Archive</p4>
-<% @posts.organize_posts.to_a.reverse.each do |year, months_with_entries| %>
-      <% d = DateTime.parse("1/#{year}") %>
 
+<<<<<<< HEAD
       <li> <span></span>
         <%= link_to(year, archive_path(:year => d.year)) %>
 
@@ -75,6 +73,8 @@
         </ul>
       </li>
     <% end %>
+=======
+>>>>>>> aab2d9074d25e7d6208bdf3284cefb69b75dc49a
 
 
 
