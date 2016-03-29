@@ -56,25 +56,9 @@
 <h4>Blog Categories</h4>
 
 
-<<<<<<< HEAD
-      <li> <span></span>
-        <%= link_to(year, archive_path(:year => d.year)) %>
 
-        <ul class="months">
-          <% months_with_entries.each do |month, entries| %>
-            <% d = DateTime.parse("#{year}, #{month}") %>
+   
 
-            <li> <span></span>
-              <%= link_to I18n.l(d, :format => "%B"), root_path %>
-			  <span class="badge"><%= @posts.years.count %></span>
-            </li>
-
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-=======
->>>>>>> aab2d9074d25e7d6208bdf3284cefb69b75dc49a
 
 
 
